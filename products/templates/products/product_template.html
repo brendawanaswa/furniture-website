@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ product.name }} - Brenda Furnitures</title>
+    <link rel="stylesheet" href="{% static 'products/css/style.css' %}">
+</head>
+<body>
+    <header>
+        <h1>{{ product.name }}</h1>
+    </header>
+
+    <section class="product-detail container">
+        <div class="left">
+            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+        </div>
+        <div class="right">
+            <h2>{{ product.name }}</h2>
+            <p class="price">Ksh {{ product.price }}</p>
+            <p>{{ product.description }}</p>
+            <a href="{% url 'add_to_cart' product.id %}" class="btn">Add to Cart</a>
+        </div>
+    </section>
+</body>
+</html>
