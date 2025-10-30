@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-2e18!7tx6aut(rb4w_)jqtr2s1#l-5opxwirx8e2r01a-9i9&j'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -118,17 +118,18 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = 'static/'
-
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
-
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+# Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-     BASE_DIR / 'blog' / 'static', ]
+    str(BASE_DIR / 'products' / 'static'),  # convert Path to string
+]
+STATIC_ROOT = str(BASE_DIR / 'staticfiles')  # convert Path to string
+
+# Media files (uploaded by users)
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT = str(BASE_DIR / 'media')  # convert Path to string
+
+
 
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'home'
